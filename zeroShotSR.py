@@ -149,7 +149,7 @@ def evaluate_sr(hr_image, gt_image_path):
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser(description="Zero-Shot Super-Resolution")
     argparser.add_argument("--lr_image_path", type=str, required=True, help="Path to low-resolution image")
-    argparser.add_argument("--gt_image_path", type=str, required=True, help="Path to ground-truth high-resolution image (for evaluation)")
+    argparser.add_argument("--gt_image_path", type=str, help="Path to ground-truth high-resolution image (for evaluation)")
     argparser.add_argument("--output_dir", type=str, default="outputs", help="Directory to save output images")
     argparser.add_argument("--scale_factor", type=int, default=2, help="Super-resolution scale factor")
     argparser.add_argument("--num_steps", type=int, default=50, help="Number of denoising steps")
