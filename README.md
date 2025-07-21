@@ -3,9 +3,9 @@
 
 ## How to Use the Code
 Setup Environment:
-
+```
 pip install torch diffusers transformers torchvision scikit-image numpy pillow
-
+```
 Download SD v1.5: https://huggingface.co/runwayml/stable-diffusion-v1-5.
 Download DINOv2 ViT-S/14: https://github.com/facebookresearch/dinov2.
 
@@ -14,10 +14,15 @@ Use an LR image from DIV2K .
 Example: Downsample an HR image to create an LR input (e.g., 128x128 from 512x512 for 4× SR).
 
 ## Run Zero-Shot SR:
-Update lr_image_path and gt_image_path in the code.
+Update lr_image_path.
+```
+python zeroShotSR.py.
+```
 
-## Run the script: python cald_sr.py.
-The output HR image will be saved to outputs/hr_output.jpg.
+## Run Few-Shot SR: 
+```
+python zeroFewShotSR.py.
+```
 
 ## Evaluate Results:
 If you have a ground-truth HR image, the code computes PSNR and SSIM using evaluate_sr.
