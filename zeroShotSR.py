@@ -87,7 +87,7 @@ def zero_shot_sr(lr_image_path, scale_factor=4, num_steps=50):
     # Load and preprocess LR image
     lr_image = Image.open(lr_image_path).convert("RGB")
     lr_tensor_dinov2 = dinov2_transform(lr_image).unsqueeze(0).to(device)
-    lr_tensor_sd = sd_transform(lr_image).unsqueeze(0).to(device).half()
+    lr_tensor_sd = sd_transform(lr_image).unsqueeze(0).to(device)
 
     # Extract context features with DINOv2
     with torch.no_grad():
