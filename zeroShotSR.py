@@ -7,6 +7,7 @@ from torchvision import transforms
 from PIL import Image
 import numpy as np
 from pathlib import Path
+import os, argparse
 
 
 # 6. Evaluation Function (PSNR and SSIM)
@@ -146,14 +147,23 @@ def evaluate_sr(hr_image, gt_image_path):
 
 # 7. Example Usage
 if __name__ == "__main__":
+    argparser = argparse.ArgumentParser(description="Zero-Shot Super-Resolution")
+    argparser.add_argument("--lr_image_path", type=str, required=True, help="Path to low-resolution image")
+    argparser.add_argument("--gt_image_path", type=str, required=True, help="Path to ground-truth high-resolution image (for evaluation)")
+    argparser.add_argument("--output_dir", type=str, default="outputs", help="Directory to save output images")
+    argparser.add_argument("--scale_factor", type=int, default=2, help="Super-resolution scale factor")
+    argparser.add_argument("--num_steps", type=int, default=50, help="Number of denoising steps")
+
+    args = argparser.parse_args()
+
     # Paths (replace with your image paths)
-    lr_image_path = "path_to_lr_image.jpg"  # Low-resolution input
-    gt_image_path = "path_to_hr_image.jpg"  # Ground-truth HR (for evaluation)
-    output_dir = Path("outputs")
+    lr_image_path = args.lr_image_path
+    gt_image_path = args.gt_image_path
+    output_dir = Path(args.output_dir)
     output_dir.mkdir(exist_ok=True)
 
     # Run zero-shot SR
-    hr_image = zero_shot_sr(lr_image_path, scale_factor=4, num_steps=50)
+    hr_image = zero_shot_sr(lr_image_path, scale_factor=args.scale_factor, num_steps=args.num_steps)
     output_path = output_dir / "hr_output.jpg"
     hr_image.save(output_path)
 
