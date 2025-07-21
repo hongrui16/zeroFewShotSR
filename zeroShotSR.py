@@ -96,6 +96,8 @@ def zero_shot_sr(lr_image_path, scale_factor=4, num_steps=50):
 
     # Map to SD latent space
     latent_context = context_mlp(context_vector)  # [1, 512]
+    latent_context = latent_context.unsqueeze(1)  # [B, 1, 512]
+
 
     # Encode LR image to SD latent
     with torch.no_grad():
