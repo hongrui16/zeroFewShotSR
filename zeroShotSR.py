@@ -38,7 +38,7 @@ dinov2.eval()
 
 # 2. Context Mapping MLP
 class ContextMappingMLP(nn.Module):
-    def __init__(self, input_dim=384, output_dim=512):
+    def __init__(self, input_dim=384, output_dim=768):
         super(ContextMappingMLP, self).__init__()
         self.mlp = nn.Sequential(
             nn.Linear(input_dim, 256),
