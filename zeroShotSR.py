@@ -24,7 +24,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # 1. Load Pre-trained Models
 # Stable Diffusion v1.5
 sd_pipeline = StableDiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16
+    "runwayml/stable-diffusion-v1-5"
 ).to(device)
 sd_pipeline.safety_checker = None  # Disable for research purposes
 vae = sd_pipeline.vae
